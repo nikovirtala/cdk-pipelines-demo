@@ -7,7 +7,8 @@ const project = new AwsCdkTypeScriptApp({
   /* AwsCdkTypeScriptAppOptions */
   // appEntrypoint: 'main.ts',                                                 /* The CDK app's entrypoint (relative to the source directory, which is "src" by default). */
   cdkDependencies: [
-    '@aws-cdk/aws-apigateway',
+    '@aws-cdk/aws-apigatewayv2',
+    '@aws-cdk/aws-apigatewayv2-integrations',
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-codepipeline',
     '@aws-cdk/aws-codepipeline-actions',

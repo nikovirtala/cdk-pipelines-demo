@@ -1,4 +1,5 @@
-import * as apigw from '@aws-cdk/aws-apigateway';
+import * as apigw from '@aws-cdk/aws-apigatewayv2';
+import * as integration from '@aws-cdk/aws-apigatewayv2-integrations';
 import * as lambda from '@aws-cdk/aws-lambda';
 import { CfnOutput, Construct, Stack, StackProps } from '@aws-cdk/core';
 
@@ -15,7 +16,7 @@ export class CdkpipelinesDemoStack extends Stack {
     super(scope, id, props);
 
     // The Lambda function that contains the functionality
-    const handler = new lambda.Function(this, 'Lambda', {
+    const handlerFunction = new lambda.Function(this, 'Lambda', {
       runtime: lambda.Runtime.NODEJS_12_X,
       code: new lambda.InlineCode(`exports.handler = (event, context, callback) =>
       callback(null, {
@@ -29,13 +30,14 @@ export class CdkpipelinesDemoStack extends Stack {
     });
 
     // An API Gateway to make the Lambda web-accessible
-    const gw = new apigw.LambdaRestApi(this, 'Gateway', {
-      description: 'Endpoint for a simple Lambda-powered web service',
-      handler,
+    const gw = new apigw.HttpApi(this, 'Gateway', {
+      defaultIntegration: new integration.LambdaProxyIntegration({
+        handler: handlerFunction,
+      }),
     });
 
     this.urlOutput = new CfnOutput(this, 'Url', {
-      value: gw.url,
+      value: gw.url ?? 'Something went wrong',
     });
   }
 }
