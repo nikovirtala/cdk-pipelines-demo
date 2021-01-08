@@ -2,6 +2,7 @@ import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
 import { Construct, SecretValue, Stack, StackProps } from '@aws-cdk/core';
 import { CdkPipeline, SimpleSynthAction } from '@aws-cdk/pipelines';
+import { CdkpipelinesDemoStage } from './cdk-pipelines-demo-stage';
 
 /**
  * The stack that defines the application pipeline
@@ -13,7 +14,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
 
-    new CdkPipeline(this, 'Pipeline', {
+    const pipeline = new CdkPipeline(this, 'Pipeline', {
       // The pipeline name
       pipelineName: 'MyServicePipeline',
       cloudAssemblyArtifact,
@@ -39,6 +40,10 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     });
 
     // This is where we add the application stages
-    // ...
+    pipeline.addApplicationStage(
+      new CdkpipelinesDemoStage(this, 'Staging', {
+        env: { account: '546195103066', region: 'eu-west-1' },
+      }),
+    );
   }
 }
