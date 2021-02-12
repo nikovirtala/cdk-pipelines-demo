@@ -56,7 +56,7 @@ const project = new AwsCdkTypeScriptApp({
   // codeCovTokenSecret: undefined,                                            /* Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. */
   // copyrightOwner: undefined,                                                /* License copyright owner. */
   // copyrightPeriod: undefined,                                               /* The copyright years to put in the LICENSE file. */
-  // defaultReleaseBranch: 'master',                                           /* The name of the main release branch. */
+  defaultReleaseBranch: 'main' /* The name of the main release branch. */,
   // dependabot: true,                                                         /* Include dependabot configuration. */
   // dependabotOptions: undefined,                                             /* Options for dependabot. */
   // gitignore: undefined,                                                     /* Additional entries to .gitignore. */
