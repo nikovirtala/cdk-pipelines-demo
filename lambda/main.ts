@@ -1,4 +1,15 @@
-const response_body = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Honk!</title></head><body><pre>Honk!</pre></body></html>';
+const response_body = `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Honk!</title>
+</head>
+<body>
+<pre>Honk!</pre>
+</body>
+</html>
+`;
 
 exports.handler = (event, context, callback) =>
   callback(null, {
