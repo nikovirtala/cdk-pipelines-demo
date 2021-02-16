@@ -36,7 +36,6 @@ const response_body = `
 exports.handler = (event, context, callback) =>
   callback(null, {
     statusCode: '200',
-    // body: JSON.stringify(event),event, context, callback
     body: response_body,
     headers: {
       'Content-Type': 'text/html',
