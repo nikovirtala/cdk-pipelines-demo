@@ -1,7 +1,7 @@
 const { AwsCdkTypeScriptApp, NpmTaskExecution } = require('projen');
 
 const project = new AwsCdkTypeScriptApp({
-  cdkVersion: '1.83.0',
+  cdkVersion: '1.89.0',
   name: 'cdk-pipelines-demo',
 
   /* AwsCdkTypeScriptAppOptions */
@@ -13,6 +13,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-codepipeline',
     '@aws-cdk/aws-codepipeline-actions',
     '@aws-cdk/pipelines',
+    '@aws-cdk/aws-lambda-nodejs',
   ] /* Which AWS CDK modules (those that start with "@aws-cdk/") this app uses. */,
   // cdkVersionPinning: false,                                                 /* Use pinned version instead of caret version for CDK. */
   context: { '@aws-cdk/core:newStyleStackSynthesis': true } /* Additional context to include in `cdk.json`. */,
@@ -29,7 +30,7 @@ const project = new AwsCdkTypeScriptApp({
   // bundledDeps: undefined,                                                   /* List of dependencies to bundle into this module. */
   // deps: [], /* Runtime dependencies of this module. */
   // description: undefined,                                                   /* The description is just a string that helps people understand the purpose of the package. */
-  devDeps: ['prettier', '@types/aws-lambda'] /* Build dependencies for this module. */,
+  devDeps: ['prettier', '@types/aws-lambda', 'esbuild@0'] /* Build dependencies for this module. */,
   // entrypoint: 'lib/index.js',                                               /* Module entrypoint (`main` in `package.json`). */
   // homepage: undefined,                                                      /* Package's Homepage / Website. */
   // keywords: undefined,                                                      /* Keywords to include in `package.json`. */
@@ -52,7 +53,7 @@ const project = new AwsCdkTypeScriptApp({
   /* NodeProjectOptions */
   // antitamper: true,                                                         /* Checks that after build there are no modified files on git. */
   // buildWorkflow: undefined,                                                 /* Define a GitHub workflow for building PRs. */
-  // codeCov: false,                                                           /* Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret. */
+  codeCov: false /* Define a GitHub workflow step for sending code coverage metrics to https://codecov.io/ Uses codecov/codecov-action@v1 A secret is required for private repos. Configured with @codeCovTokenSecret. */,
   // codeCovTokenSecret: undefined,                                            /* Define the secret name for a specified https://codecov.io/ token A secret is required to send coverage for private repositories. */
   // copyrightOwner: undefined,                                                /* License copyright owner. */
   // copyrightPeriod: undefined,                                               /* The copyright years to put in the LICENSE file. */
@@ -60,7 +61,7 @@ const project = new AwsCdkTypeScriptApp({
   // dependabot: true,                                                         /* Include dependabot configuration. */
   // dependabotOptions: undefined,                                             /* Options for dependabot. */
   // gitignore: undefined,                                                     /* Additional entries to .gitignore. */
-  // jest: true,                                                               /* Setup jest unit tests. */
+  jest: false /* Setup jest unit tests. */,
   // jestOptions: undefined,                                                   /* Jest options. */
   // mergify: true,                                                            /* Adds mergify configuration. */
   // mergifyAutoMergeLabel: 'auto-merge',                                      /* Automatically merge PRs that build successfully and have this label. */
@@ -74,7 +75,7 @@ const project = new AwsCdkTypeScriptApp({
   // projenUpgradeSchedule: [ '0 6 * * *' ],                                   /* Customize the projenUpgrade schedule in cron expression. */
   // projenUpgradeSecret: undefined,                                           /* Periodically submits a pull request for projen upgrades (executes `yarn projen:upgrade`). */
   // projenVersion: Semver.latest(),                                           /* Version of projen to install. */
-  // pullRequestTemplate: true,                                                /* Include a GitHub pull request template. */
+  pullRequestTemplate: false /* Include a GitHub pull request template. */,
   // pullRequestTemplateContents: undefined,                                   /* The contents of the pull request template. */
   // rebuildBot: undefined,                                                    /* Installs a GitHub workflow which is triggered when the comment "@projen rebuild" is added to a pull request. */
   // rebuildBotCommand: 'rebuild',                                             /* The pull request bot command to use in order to trigger a rebuild and commit of the contents of the branch. */

@@ -1,6 +1,7 @@
-import * as apigw from '@aws-cdk/aws-apigatewayv2';
-import * as integration from '@aws-cdk/aws-apigatewayv2-integrations';
-import * as lambda from '@aws-cdk/aws-lambda';
+import { HttpApi } from '@aws-cdk/aws-apigatewayv2';
+import { LambdaProxyIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
+import { Runtime } from '@aws-cdk/aws-lambda';
+import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 import { CfnOutput, Construct, Stack, StackProps } from '@aws-cdk/core';
 
 /**
@@ -16,22 +17,16 @@ export class CdkpipelinesDemoStack extends Stack {
     super(scope, id, props);
 
     // The Lambda function that contains the functionality
-    const handlerFunction = new lambda.Function(this, 'Lambda', {
-      runtime: lambda.Runtime.NODEJS_12_X,
-      code: new lambda.InlineCode(`exports.handler = (event, context, callback) =>
-      callback(null, {
-        statusCode: '200',
-        body: JSON.stringify(event),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });`),
-      handler: 'index.handler',
+    const handlerFunction = new NodejsFunction(this, 'Lambda', {
+      runtime: Runtime.NODEJS_14_X,
+      memorySize: 1024,
+      handler: 'handler',
+      entry: 'lambda/main.ts',
     });
 
     // An API Gateway to make the Lambda web-accessible
-    const gw = new apigw.HttpApi(this, 'Gateway', {
-      defaultIntegration: new integration.LambdaProxyIntegration({
+    const gw = new HttpApi(this, 'Gateway', {
+      defaultIntegration: new LambdaProxyIntegration({
         handler: handlerFunction,
       }),
     });
