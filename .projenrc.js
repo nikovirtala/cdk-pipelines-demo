@@ -23,6 +23,7 @@ const project = new AwsCdkTypeScriptApp({
   defaultReleaseBranch: 'main',
   jest: false,
   pullRequestTemplate: false,
+  mergify: true,
 });
 
 project.synth();
