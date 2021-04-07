@@ -1,7 +1,7 @@
 const { AwsCdkTypeScriptApp, NpmTaskExecution } = require('projen');
 
 const project = new AwsCdkTypeScriptApp({
-  cdkVersion: '1.94.1',
+  cdkVersion: '1.97.0',
   name: 'cdk-pipelines-demo',
   cdkDependencies: [
     '@aws-cdk/aws-apigatewayv2',
