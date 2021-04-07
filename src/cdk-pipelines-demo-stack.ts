@@ -1,4 +1,5 @@
 import { HttpApi } from '@aws-cdk/aws-apigatewayv2';
+import { HttpJwtAuthorizer } from '@aws-cdk/aws-apigatewayv2-authorizers';
 import { LambdaProxyIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
 import { Runtime } from '@aws-cdk/aws-lambda';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
@@ -17,22 +18,28 @@ export class CdkpipelinesDemoStack extends Stack {
     super(scope, id, props);
 
     // The Lambda function that contains the functionality
-    const handlerFunction = new NodejsFunction(this, 'Lambda', {
+    const handlerFunction = new NodejsFunction(this, 'pipeline-demo-function', {
       runtime: Runtime.NODEJS_14_X,
       memorySize: 1024,
       handler: 'handler',
       entry: 'lambda/main.ts',
     });
 
-    // An API Gateway to make the Lambda web-accessible
-    const gw = new HttpApi(this, 'Gateway', {
+    // API Gateway HTTP API to make the Lambda web-accessible
+    const api = new HttpApi(this, 'pipeline-demo-api', {
+      defaultAuthorizer: new HttpJwtAuthorizer({
+        authorizerName: 'Auth0',
+        identitySource: ['$request.header.Authorization'],
+        jwtAudience: ['https://github.com/nikovirtala/cdk-pipelines-demo'],
+        jwtIssuer: 'https://nikovirtala.eu.auth0.com/',
+      }),
       defaultIntegration: new LambdaProxyIntegration({
         handler: handlerFunction,
       }),
     });
 
     this.urlOutput = new CfnOutput(this, 'Url', {
-      value: gw.url ?? 'Something went wrong',
+      value: api.url ?? 'Something went wrong',
     });
   }
 }
