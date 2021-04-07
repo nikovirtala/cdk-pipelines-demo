@@ -75,6 +75,11 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-apigatewayv2-authorizers",
+      "version": "^1.97.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-apigatewayv2-integrations",
       "version": "^1.97.0",
       "type": "runtime"

@@ -5,6 +5,7 @@ const project = new AwsCdkTypeScriptApp({
   name: 'cdk-pipelines-demo',
   cdkDependencies: [
     '@aws-cdk/aws-apigatewayv2',
+    '@aws-cdk/aws-apigatewayv2-authorizers',
     '@aws-cdk/aws-apigatewayv2-integrations',
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-codepipeline',

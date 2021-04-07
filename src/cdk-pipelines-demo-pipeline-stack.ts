@@ -14,9 +14,9 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
 
-    const pipeline = new CdkPipeline(this, 'Pipeline', {
+    const pipeline = new CdkPipeline(this, 'pipeline-demo-pipeline', {
       // The pipeline name
-      pipelineName: 'MyServicePipeline',
+      pipelineName: 'pipeline-demo-pipeline',
       cloudAssemblyArtifact,
 
       // Where the source can be found
@@ -41,7 +41,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
 
     // This is where we add the application stages
     pipeline.addApplicationStage(
-      new CdkpipelinesDemoStage(this, 'Staging', {
+      new CdkpipelinesDemoStage(this, 'staging', {
         env: { account: '546195103066', region: 'eu-west-1' },
       }),
     );
