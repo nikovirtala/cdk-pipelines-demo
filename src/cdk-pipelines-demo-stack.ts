@@ -1,6 +1,6 @@
 import { HttpApi } from '@aws-cdk/aws-apigatewayv2';
 import { HttpJwtAuthorizer } from '@aws-cdk/aws-apigatewayv2-authorizers';
-import { LambdaProxyIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
+import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
 import { Runtime } from '@aws-cdk/aws-lambda';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 import { CfnOutput, Construct, Stack, StackProps } from '@aws-cdk/core';
@@ -27,15 +27,12 @@ export class CdkpipelinesDemoStack extends Stack {
 
     // API Gateway HTTP API to make the Lambda web-accessible
     const api = new HttpApi(this, 'pipeline-demo-api', {
-      defaultAuthorizer: new HttpJwtAuthorizer({
+      defaultAuthorizer: new HttpJwtAuthorizer('auth0', 'https://nikovirtala.eu.auth0.com/', {
         authorizerName: 'Auth0',
         identitySource: ['$request.header.Authorization'],
         jwtAudience: ['https://github.com/nikovirtala/cdk-pipelines-demo'],
-        jwtIssuer: 'https://nikovirtala.eu.auth0.com/',
       }),
-      defaultIntegration: new LambdaProxyIntegration({
-        handler: handlerFunction,
-      }),
+      defaultIntegration: new HttpLambdaIntegration('api', handlerFunction),
     });
 
     this.urlOutput = new CfnOutput(this, 'Url', {
