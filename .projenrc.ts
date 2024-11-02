@@ -9,6 +9,16 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   defaultReleaseBranch: "main",
   deps: ["aws-cdk-lib", "constructs"],
   devDeps: ["prettier", "@types/aws-lambda", "esbuild@0"],
+  dependabot: false,
+  depsUpgradeOptions: {
+    workflowOptions: {
+      labels: ["auto-approve", "auto-merge"],
+    },
+  },
+  autoApproveOptions: {
+    secret: "GITHUB_TOKEN",
+    allowedUsernames: ["nikovirtala"],
+  },
   jest: false,
   license: "MIT",
   minNodeVersion: "v20.17.0",
