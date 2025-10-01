@@ -33,7 +33,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.152",
+    "@types/aws-lambda": "^8.10.153",
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
@@ -45,7 +45,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^4.2.5",
     "prettier": "^2.8.8",
-    "projen": "^0.96.3",
+    "projen": "^0.96.5",
     "ts-node": "^9.1.1",
     "typescript": "5.5.4"
   },
