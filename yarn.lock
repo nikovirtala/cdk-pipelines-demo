@@ -1483,9 +1483,9 @@ get-symbol-description@^1.1.0:
     get-intrinsic "^1.2.6"
 
 get-tsconfig@^4.10.0:
-  version "4.13.0"
-  resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.13.0.tgz#fcdd991e6d22ab9a600f00e91c318707a5d9a0d7"
-  integrity sha512-1VKTZJCwBrvbd+Wn3AOgQP/2Av+TfTCOlE4AcRJE72W1ksZXbAx8PPBR9RzgTeSPzlPMHrbANMH3LbltH73wxQ==
+  version "4.13.1"
+  resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.13.1.tgz#ff96c0d98967df211c1ebad41f375ccf516c43fa"
+  integrity sha512-EoY1N2xCn44xU6750Sx7OjOIT59FkmstNc3X6y5xpz7D5cBtZRe/3pSlTkDJgqsOk3WwZPkWfonhhUJfttQo3w==
   dependencies:
     resolve-pkg-maps "^1.0.0"
 
@@ -2173,10 +2173,10 @@ prettier@^2.8.8:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
-projen@^0.99.8:
-  version "0.99.8"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.99.8.tgz#aa9b004f254ba132fe2dcc90cff61e4d0bfb2ee5"
-  integrity sha512-1loAy1XQ5rZ0vobXOdt+ytHTz/6F77H4d4Rtn1Kz0TA/UzTxPgCgBmfOy6ZYAmsXE7Jq+ODGjYdZhaKSQDw10Q==
+projen@^0.99.9:
+  version "0.99.9"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.99.9.tgz#62dcffdc615b19e203e7889204aadb33c4edf062"
+  integrity sha512-yg+0VCwfQyeqwclPuono0vNYKOAsPoO+CCh7xapI2dru8Xw5pEtNs+LEIfFd2pMwEUDTn7QyN/Jt4IfP9jLEzw==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
