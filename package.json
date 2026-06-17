@@ -50,7 +50,7 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.158.0",
+    "aws-cdk-lib": "^2.246.0",
     "constructs": "^10.0.5"
   },
   "engines": {
