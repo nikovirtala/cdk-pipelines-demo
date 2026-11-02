@@ -4,7 +4,7 @@ const project = new AwsCdkTypeScriptAppProject({
     authorEmail: "niko.virtala@hey.com",
     authorName: "Niko Virtala",
     authorUrl: "https://cloudgardener.dev",
-    cdkVersion: "2.158.0",
+    cdkVersion: "2.275.0",
     defaultReleaseBranch: "main",
     devDeps: ["@nikovirtala/projen-constructs", "@types/aws-lambda", "esbuild@0"],
     license: "MIT",
