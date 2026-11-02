@@ -1,6 +1,6 @@
 import { pipelines, SecretValue, Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { CdkpipelinesDemoStage } from "./cdk-pipelines-demo-stage";
+import { CdkpipelinesDemoStage } from "./cdk-pipelines-demo-stage.ts";
 
 /**
  * The stack that defines the application pipeline
@@ -19,7 +19,12 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
             authentication: SecretValue.secretsManager("github-access-token"),
           }
         ),
-        commands: ["yarn install", "npx projen build", "npx projen synth"],
+        commands: [
+          "n 24.22.2",
+          "npm install -g pnpm@11.20.0",
+          "pnpm install --frozen-lockfile",
+          "pnpm exec projen synth",
+        ],
       }),
     });
 

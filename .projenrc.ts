@@ -1,33 +1,16 @@
-import { awscdk } from "projen";
+import { AwsCdkTypeScriptAppProject } from "@nikovirtala/projen-constructs";
 
-const project = new awscdk.AwsCdkTypeScriptApp({
+const project = new AwsCdkTypeScriptAppProject({
   authorEmail: "niko.virtala@hey.com",
   authorName: "Niko Virtala",
   authorUrl: "https://cloudgardener.dev",
   cdkVersion: "2.158.0",
-  codeCov: false,
   defaultReleaseBranch: "main",
-  deps: ["aws-cdk-lib", "constructs"],
-  devDeps: ["prettier", "@types/aws-lambda", "esbuild@0"],
-  dependabot: false,
-  depsUpgradeOptions: {
-    workflowOptions: {
-      labels: ["auto-approve", "auto-merge"],
-    },
-  },
-  autoApproveOptions: {
-    secret: "GITHUB_TOKEN",
-    allowedUsernames: ["nikovirtala"],
-  },
-  jest: false,
+  devDeps: ["@nikovirtala/projen-constructs", "@types/aws-lambda", "esbuild@0"],
   license: "MIT",
-  minNodeVersion: "v20.17.0",
   name: "cdk-pipelines-demo",
-  prettier: true,
-  projenrcTs: true,
   pullRequestTemplate: false,
   repository: "https://github.com/nikovirtala/cdk-pipelines-demo.git",
-  typescriptVersion: "5.5.4",
 });
 
 project.synth();

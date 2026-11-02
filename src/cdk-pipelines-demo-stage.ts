@@ -1,6 +1,6 @@
 import { CfnOutput, Stage, StageProps } from "aws-cdk-lib/core";
 import { Construct } from "constructs";
-import { CdkpipelinesDemoStack } from "./cdk-pipelines-demo-stack";
+import { CdkpipelinesDemoStack } from "./cdk-pipelines-demo-stack.ts";
 
 /**
  * Deployable unit of web service app
