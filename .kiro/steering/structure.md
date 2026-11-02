@@ -45,10 +45,10 @@
 These files are managed by Projen and should not be edited directly:
 - `package.json`
 - `tsconfig*.json`
-- `.eslintrc.json`
-- `.prettierrc.json`
+- `biome.jsonc`
+- `vitest.config.ts`
 - `.gitignore`
 - `.npmignore`
 - Files in `.projen/` directory
 
-To modify these, edit `.projenrc.ts` and run `npx projen`.
+To modify these, edit `.projenrc.ts` and run `pnpm exec projen`.

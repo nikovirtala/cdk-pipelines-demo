@@ -33,7 +33,7 @@ const response_body = `
 </html>
 `;
 
-exports.handler = (event, context, callback) =>
+export const handler = (event, context, callback) =>
   callback(null, {
     statusCode: '200',
     body: response_body,
