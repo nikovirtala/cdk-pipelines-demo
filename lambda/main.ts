@@ -33,11 +33,11 @@ const response_body = `
 </html>
 `;
 
-export const handler = (event, context, callback) =>
-  callback(null, {
-    statusCode: '200',
-    body: response_body,
-    headers: {
-      'Content-Type': 'text/html',
-    },
-  });
+// Node.js 24 and later only support async handlers, not callbacks
+export const handler = async () => ({
+  statusCode: 200,
+  body: response_body,
+  headers: {
+    'Content-Type': 'text/html',
+  },
+});

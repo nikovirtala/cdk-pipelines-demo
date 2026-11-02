@@ -14,9 +14,9 @@ describe("CdkpipelinesDemoStack", () => {
         template = Template.fromStack(new CdkpipelinesDemoStack(new App({ context }), "test"));
     });
 
-    test("creates the Node.js 20 handler function", () => {
+    test("creates the Node.js 24 handler function", () => {
         template.hasResourceProperties("AWS::Lambda::Function", {
-            Runtime: "nodejs20.x",
+            Runtime: "nodejs24.x",
             MemorySize: 1024,
             Handler: "index.handler",
         });
@@ -57,13 +57,25 @@ describe("CdkpipelinesDemoPipelineStack", () => {
                         phases: {
                             build: {
                                 commands: [
-                                    "n 24.22.2",
                                     "npm install -g pnpm@11.20.0",
                                     "pnpm install --frozen-lockfile",
                                     "pnpm exec projen synth",
                                 ],
                             },
                         },
+                    }),
+                ),
+            },
+        });
+    });
+
+    test("synthesizes on Node.js 24 in the standard 7.0 image", () => {
+        template.hasResourceProperties("AWS::CodeBuild::Project", {
+            Environment: Match.objectLike({ Image: "aws/codebuild/standard:7.0" }),
+            Source: {
+                BuildSpec: Match.serializedJson(
+                    Match.objectLike({
+                        phases: Match.objectLike({ install: { "runtime-versions": { nodejs: "24" } } }),
                     }),
                 ),
             },

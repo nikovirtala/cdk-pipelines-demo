@@ -20,7 +20,7 @@ export class CdkpipelinesDemoStack extends Stack {
 
         // The Lambda function that contains the functionality
         const handlerFunction = new NodejsFunction(this, "pipeline-demo-function", {
-            runtime: Runtime.NODEJS_20_X,
+            runtime: Runtime.NODEJS_24_X,
             memorySize: 1024,
             handler: "handler",
             entry: "lambda/main.ts",
